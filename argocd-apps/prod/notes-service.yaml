@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: notes-service-prod
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/simple-distributed-system/helm-charts
+      path: helm-notes-service
+      targetRevision: main
+      helm:
+        valueFiles:
+          - $values/environments/prod/notes-service/values.yaml
+    - repoURL: https://github.com/simple-distributed-system/notes-gitops-config
+      targetRevision: master
+      ref: values
+    - repoURL: https://github.com/simple-distributed-system/notes-gitops-config
+      targetRevision: master
+      path: environments/prod/notes-service/manifests
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: notes-prod
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

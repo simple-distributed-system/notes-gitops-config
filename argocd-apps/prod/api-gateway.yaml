@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: api-gateway-prod
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/simple-distributed-system/helm-charts
+      path: helm-api-gateway
+      targetRevision: main
+      helm:
+        valueFiles:
+          - $values/environments/prod/api-gateway/values.yaml
+    - repoURL: https://github.com/simple-distributed-system/notes-gitops-config
+      targetRevision: master
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: notes-prod
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
