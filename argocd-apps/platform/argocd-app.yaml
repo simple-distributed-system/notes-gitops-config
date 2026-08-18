@@ -13,7 +13,7 @@ spec:
         valueFiles:
           - $values/platform/argocd/values.yaml
     - repoURL: https://github.com/simple-distributed-system/notes-gitops-config
-      targetRevision: main
+      targetRevision: master
       ref: values
   destination:
     server: https://kubernetes.default.svc
