@@ -13,10 +13,10 @@ spec:
         valueFiles:
           - $values/environments/test/notes-service/values.yaml
     - repoURL: https://github.com/simple-distributed-system/notes-gitops-config
-      targetRevision: master
+      targetRevision: main
       ref: values
     - repoURL: https://github.com/simple-distributed-system/notes-gitops-config
-      targetRevision: master
+      targetRevision: main
       path: environments/test/notes-service/manifests
   destination:
     server: https://kubernetes.default.svc
