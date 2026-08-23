@@ -1,0 +1,26 @@
+replicaCount: 2
+
+image:
+  repository: ghcr.io/sarka99/notes-service
+  tag: "9c566a8-dirty"
+  pullPolicy: IfNotPresent
+
+imagePullSecrets:
+  - name: ghcr-secret
+
+podLabels:
+  environment: prod
+
+env:
+  SPRING_PROFILES_ACTIVE: prod
+
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 100m
+  limits:
+    memory: 512Mi
+    cpu: 500m
+
+autoscaling:
+  enabled: false
