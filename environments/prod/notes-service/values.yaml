@@ -16,13 +16,5 @@ env:
   SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE: "3"
   SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE: "0"
 
-resources:
-  requests:
-    memory: 256Mi
-    cpu: 100m
-  limits:
-    memory: 512Mi
-    cpu: 500m
-
 autoscaling:
   enabled: false
