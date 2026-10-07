@@ -4,4 +4,4 @@ env:
   SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE: "0"
 image:
   repository: europe-west3-docker.pkg.dev/project-0244e2c2-2a02-4aac-92a/prod-docker/notes-service
-  tag: 0.0.4
+  tag: 0.0.5
